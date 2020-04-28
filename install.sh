@@ -18,6 +18,8 @@ apt install gimp -y
 
 apt install autorandr -y
 
+apt install pulseaudio -y
+
 apt install pulseeffects -y
 
 apt install feh -y
