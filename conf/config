@@ -1,0 +1,267 @@
+# Mod keys
+
+set $mod Mod1
+set $sup Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block.
+
+#font pango:DejaVu Sans Mono 12
+#font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+font pango:Droid Sans Mono Dotted 12
+#font pango:DroidSansMono 13
+#font pango:Sans 13
+#font pango:hermit 12
+#font pango:Inconsolata 15
+#font pango:SourceCodePro-SemiBold 11
+#font pango:Terminus 14px
+#font pango:UbuntuMono-regular 12
+#font pango:monospace 10
+#font pango:Source Code Pro for Powerline, FontAwesome Regular, Icons 12
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+###########################Custom Sripts###########################
+
+# Power Off
+bindsym $mod+z exec sh ~/.config/i3/.bash/bin/poweroff.sh
+
+# Reboot
+bindsym $sup+z exec sh ~/.config/i3/.bash/bin/reboot.sh
+
+###########################Work Spaces#############################
+
+# switch to workspace
+bindsym $mod+m workspace 🂱
+bindsym $mod+1 workspace 🂲
+bindsym $mod+2 workspace 🂳
+bindsym $mod+3 workspace 🂴
+bindsym $mod+4 workspace 🂵
+bindsym $mod+5 workspace 🂶
+bindsym $mod+6 workspace 🂷
+bindsym $mod+7 workspace 🂸
+bindsym $mod+8 workspace 🂹
+bindsym $mod+9 workspace 🂺
+bindsym $mod+0 workspace 🂻
+
+# move focused container to workspace
+bindsym $mod+Shift+m move container to workspace 🂱
+bindsym $mod+Shift+1 move container to workspace 🂲
+bindsym $mod+Shift+2 move container to workspace 🂳
+bindsym $mod+Shift+3 move container to workspace 🂴
+bindsym $mod+Shift+4 move container to workspace 🂵
+bindsym $mod+Shift+5 move container to workspace 🂶
+bindsym $mod+Shift+6 move container to workspace 🂷
+bindsym $mod+Shift+7 move container to workspace 🂸
+bindsym $mod+Shift+8 move container to workspace 🂹
+bindsym $mod+Shift+9 move container to workspace 🂺
+bindsym $mod+Shift+0 move container to workspace 🂻
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace 
+bindsym $mod+Shift+r restart
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start dmenu 
+bindsym $mod+d exec dmenu_run
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $sup+b focus child
+
+# Pop window to float
+bindsym $sup+space floating toggle
+
+# Screenshot Key
+bindsym $mod+n exec gnome-screenshot
+
+# Nautilus
+bindsym $sup+n exec nautilus
+
+# Google Browser
+bindsym $mod+g exec google-chrome #personal
+
+# Chomimum
+bindsym $sup+s exec chromium-browser #work
+
+# GIMP
+bindsym $sup+g exec gimp
+
+# Discord Key
+bindsym $sup+d exec discord
+
+# Display
+bindsym $mod+t exec autorandr --change
+
+# Pulse Effects
+bindsym $mod+p exec pulseeffects
+
+# Volume contol UI
+bindsym $sup+p exec pavucontrol
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
+# Background
+exec --no-startup-id feh --bg-scale ~/wallpapers/c.png
+
+# Conky
+exec --no-startup-id conky -d
+
+# Compton
+exec --no-startup-id compton -b
+
+# resize window (you can also use the mouse for that)
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {   
+        status_command i3status
+	position top 
+	#mode hide
+       	#hidden_state hide
+       	#modifier Mod4
+ 	
+	colors {
+	        background #4f466d50
+	        statusline #5b6a8f
+		separator #2f343f00
+
+	        # colour of border, background, and text
+	        focused_workspace       #5b6a8f #5b6a8f75 #5b6a8f
+	        active_workspace        #5b6a8f #1b1b1b #1b1b1b
+	        inactive_workspace      #2f343f #2f343f75 #ffffff90
+	        urgent_workspace        #ffffff75 #eb000075 #1b1b1b 
+
+ }
+}
+
+# colour of border, background, text, indicator, and child_border
+client.focused              #5b6a8f #1b1b1b #2f343f75 #5b6a8f #5b6a8f
+client.focused_inactive     #2f343f00 #1b1b1b #5b6a8f #1b1b1b #1b1b1b
+client.unfocused            #1b1b1b #1b1b1b #5b6a8f #1b1b1b #1b1b1b
+client.urgent               #1b1b1b #1b1b1b #d8dee8 #1b1b1b #1b1b1b
+client.placeholder          #1b1b1b #1b1b1b #d8dee8 #5b6a8f #1b1b1b
+client.background           #1b1b1b #1b1b1b
+
+# Emoji unicode sources
+#https://en.wikipedia.org/wiki/Miscellaneous_Symbols#Emoji_modifiers
+#https://gist.github.com/endolith/157796
+#http://xahlee.info/comp/unicode_index.html
+#https://jrgraphix.net/r/Unicode/2300-23FF
+#
+
+# card number key
+
+#🂱 🂲 🂳 🂴 🂵 🂶 🂷 🂸 🂹 🂺 🂻 🂼 🂽 🂾 🂡 🂢 🂣 🂤 🂥 🂦 🂧 🂨 🂩 🂪 🂫 🂬 🂭 🂮 🃁 🃂 🃃 🃄 🃅 🃆 🃇 🃈 🃉 
+#🃊 🃋 🃌 🃍 🃎 🃑 🃒 🃓 🃔 🃕 🃖 🃗 🃘 🃙 🃚 🃛 🃜 🃝 🃞 🂠 🃏 🃟 🂿
+
+# special character key 
+
+#📱 📲 🖁 📳 📴 📵 📶 📞 ☎ ☏ 🕿 🖀 ✆ 🕻 🕼 🕽 ℡ 📟 📠 📷 📸 📹 📼 🎥 📽 🎞 🎧 🎤 🎙 📢 📣 🕫 🕬 📺 #📻 📾 📡 🖩 🖨 🖧 🖳 💻 🖥 ⌨ 🖮 🖦 🖯 🖰 🖱 🖲 🕹 🎮 🎹 🎘 🎚 🎛 🖴 📀 💽 💿 🖸 💾 🖪 🖫 🖬 ✇ 🖭 🔋 🔌
+#🔒 ㊙ ⏛ 🔮 ⎚ 🔥 🔦 💡 🔍 🔎 🔬 🔭 📏 📐 🌡 ⎋ ❂ ⎈
+#🔑 🔓 ⌛ ⏳ ⏰ 📅 📆 ⌚ 💭 🔕 🔇 ㊙ ⏧ ⚯ ⚀ ⚁ ⚂ ⚃ ⚄ ⚅
+#🔅 🔉 🔆 🔊 📢 📣 📯 🔔 ※ † ‡ 🚩 📌 📍 🈁 ⭕ 🎯 ⌘ ⚓ 📎 🔖 📑 📥 📨
+#🔰 ✒ ✑ ✐ ✏ ✎ ✏ ✒ ✉ 🖂 🖄 🖃 🖆 🖅 🔗 ⚯ 💣 ⏏ ✂ ✄ ✂ ✁ ✃
+#📰 📒 📓 📔 📕 📖 ⎘ ⎗ 📗 📘 📙 📚
+#📤 📦 📧 📩 📮 📫 📬 📪 📭 📊 📋
+#☎ 📞 💽 💽 💽 💽 💽
+#💽 💾 💿 📀 📼 ✇ 📁 📂 📃 📄 📇 📟 📠 📡
+#📱 📲 📳 📴 📵 📶 📷 📹 📺 📻 📼
+#☑ ✔ ✓ ⎷ ⍻  ‼ ✚ ✖ ✗ ✘ ☒ ✕ ☓ ⁉ ‽ ☯ ࿊
+#⚠ ⚡ 💢 💥 ⚕ ☤ ⚚ 💬 ⍩ ⌂ © ® ™🌡
+#🔥 🔋 🔌 ⚡ ☢ ☣ 💡 ⏰ 💻 ⌨ 🎮 ✂ 🔧 🔨 🔩  ⚙
+#📻 📺 💻 ☎ ☏ 📞 ✆ 🕾 🕿 🕽 🕻 🕼
+#♩ ♪ ♫ ♬ ♭ ♮ ♯ 🎵 🎶 🎘 🎜 🎝 🎼 🎹 🎤 💃 🎷 🎸 🎺 🎻
+#☼ ☀ 🌡 💨 🌬 🎐 🌡 🆒
+#☂ ⚡ ⌁ ☇ ☈ 🌩
+#🌨 ❅ ❆ ❄ ☃ 🌀 🌪 
+#☉ ☿ ♀ ⊕ ♂ ♃ ♄ ♅ ♆ ♇ 🌟 ☄ 🌠
+#☯ ࿊ ⌛ ⏳ 🔜 ⏰ 📅 📆 🗓 🈷 ⌚ 💤
+#♑ ♒ ♓ ♈ ♉ ♊ ♋ ♌ ♍ ♎  ♏ ♐ 
+#→ ↛ ↝ ↠ ↣ ↦ ⇀ ⇁ ⇉ ⇏ ⇒ ⇝ ⇢ ⇨ ⇰ ⇴ ⇸ ⇻ ⇾ ⟶ ⟹
+#⟾ ⟼ ⤀ ⟿ ⤁ ⤅ ⤇ ⤍ ⤏ ⤐ ⤑ ⤔ ⤕ ⤖ ⤗ ⤘ ⤞ ⤠ ⤳
+#⤼ ⥇ ⥓ ⥗ ⥛ ⥟ ⥤ ⥬ ⥭ ⥱ ⥲ ⥴ ⥵ ⥸ ➔ ➙ ➛ ➜ ➝
+#➞ ➟ ➠ ➡ ➢ ➣ ➤ ➥ ➦ ➧ ➨ ➩ ➪ ➫ ➬ ➭ ➮ ➯ ➱
+#🔜 → ▶ ⏩ ➲ ➳ ➵ ➸ ➺ ➻ ➼ ➽ ➾ ⍄ ⍈ ⍆
+#🔙 🔚 ⬅ ◀ ⏪ ← ↚ ↜ ↞ ↢ ↤ ↼ ↽ ⇇ ⇍ ⇐ ⇚ ⇜ ⇠ ⇤ ⇦ ⇷ ⇺ ⇽ ⟵ ⟸
+#⟽ ⟻ ⤂ ⤆ ⤌ ⤎ ⤝ ⤟ ⤺ ⤽ ⥒ ⥖ ⥚ ⥞ ⥢ ⥪ ⥫ ⥳ ⥶
+#⥷ ⥺ ⥻ ⬅ ◀ ⍃ ⍇ ⍅
+#🔝 🔺 🔼 ⬆ ⏫ ↑ ↟ ↥ ↾ ↿ ⇈ ⇑ ⇞ ⇡ ⇪ ⇧ ⇫ ⇬ ⇭ ⇮
+#⇯ ⟰ ⤉ ⤊ ⤒ ⥉ ⥔ ⥘ ⥜ ⥠ ⥣ ⬆ ⍐ ⍓ ⍍ ⍏
+#🔻 🔽 ⬇ ⏬ ↓ ↡ ↧ ⇂ ⇃ ⇊ ⇓ ⇟ ⇣ ⇩
+#⟱ ⤈ ⤋ ⤓ ⥕ ⥙ ⥝ ⥡ ⥥ ⬇ ▼ ⍗ ⍌ ⍔ ⍖
+#↕ ↕ ↨ ⇕ ⇳ ⇵ ⥮ ⥯ ⬍
+#🔛 ↔ ↔ ↹ ⇄ ⇆ ⇋ ⇌ ⇎ ⇔ ⇿ ⇼ ⟷ ⟺ ⥂
+#⥃ ⥄ ⥅ ⥆ ⥦ ⥧ ⬄ ⬌
+#↖ ↗ ↘ ↙ ⤴ ⤵ 🔀 🔂 🔃 🔁 🔄
+#↪ ↫ ↰ ↳ ⤿ ⤽ ⤴ ⤷ ⤹ ⬏ ⬐ ☇
+#↩ ↬ ↱ ↴ ↲ ↵ ↷ ⤸ ⤾ ⤼ ⤵ ⤶ ⬎ ⬑
+#🔙 ↩ ↪ ⋑ ⋐ ⋓ ⋒ ↶ ↷ ↺ ↻ ⤣ ⤤ ⤥ ⤦
+#⭐ ⍟ ✢ ✣ ✙ ✜ ✛ ✤ ✥ ✦ ✠ ✧ ✩ ✪ ✫ ✬ ✭ ✮ ✯ ✰
+#✲ ✱ ✳ ✴ ✵ ✶ ✷ ✸ ✹ ✺ ✻ ✼ ✽ ✾ ❃ ❇ ❈ ❉ ❊ ❋ ⁕
+#

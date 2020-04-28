@@ -1,2 +1,1 @@
-# i3dots
-i3dots plus
+chmod and chown root to the install script and then migrate configs
