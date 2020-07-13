@@ -1,10 +1,9 @@
 #!/bin/bash
 
-echo "update & upgrade"
 
-apt update && apt upgrade -y
+apt update
 
-echo "install apps"
+apt upgrade -y
 
 apt install i3 -y
 
@@ -22,6 +21,8 @@ apt install pulseaudio -y
 
 apt install pulseeffects -y
 
+apt install pulseaudio-equalizer -y
+
 apt install feh -y
 
 apt install conky -y
@@ -32,25 +33,25 @@ apt install xsettingsd -y
 
 apt install lxappearance -y
 
-apt install npm -y
+apt install curl -y
 
-apt install code -y
+apt install snap -y
 
-#apt install 
-
-echo "install snaps"
+snap install code --classic
 
 snap install discord
 
-#snap install
-
-echo "install npm must haves"
+curl -L https://www.npmjs.com/install.sh | sh
 
 npm install npm@latest -g
 
-npm install -g @vue/cli 
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-#npm install
+apt update 
 
-echo "reboot"
+apt install yarn
+
+yarn global add @vue/cli
+
 reboot
