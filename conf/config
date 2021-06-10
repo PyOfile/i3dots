@@ -121,12 +121,6 @@ bindsym $mod+n exec gnome-screenshot
 # Nautilus
 bindsym $sup+n exec nautilus
 
-# Google Browser
-bindsym $mod+g exec google-chrome #personal
-
-# Chomimum
-bindsym $sup+s exec chromium-browser #work
-
 # GIMP
 bindsym $sup+g exec gimp
 
